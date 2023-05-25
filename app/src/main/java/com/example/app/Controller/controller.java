@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.app.Service.service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class controller {
@@ -21,8 +22,23 @@ public class controller {
         return userservice.getUser();
     }
 
-    @PostMapping("saveuser")
-    public entity saveuser (@RequestBody entity user){
-        return userservice.saveuser(user);
+    @GetMapping("findbyid/{id}")
+    public Optional<entity> FindById(@PathVariable("id") Long id){
+        return userservice.FindById(id);
+    }
+
+    @PostMapping("adduser")
+    public entity adduser (@RequestBody entity useradd) {
+        return userservice.adduser(useradd);
+    }
+
+    @PutMapping ("updateuser")
+    public entity updateuser (@RequestBody entity user){
+        return userservice.updateuser(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteuser(@PathVariable Long id){
+        userservice.deleteuser(id);
     }
 }

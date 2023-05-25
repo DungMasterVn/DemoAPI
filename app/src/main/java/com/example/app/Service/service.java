@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.app.Entity.entity;
 import java.util.List;
+import java.util.Optional;
+
 import com.example.app.Repository.repository;
 
 @Service
@@ -20,8 +22,19 @@ public class service {
         return userrepo.findAll();
     }
 
-    public entity saveuser (entity user){
+    public Optional<entity> FindById(Long id){
+        return userrepo.findById(id);
+    }
+
+    public entity adduser (entity useradd) {
+        return userrepo.save(useradd);
+    }
+    public entity updateuser (entity user){
         return userrepo.save(user);
+    }
+
+    public void deleteuser (Long id){
+        userrepo.deleteById(id);
     }
 
 }
