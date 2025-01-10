@@ -10,5 +10,5 @@ WORKDIR /app
 RUN apk add --no-cache maven
 
 # Chạy lệnh build Maven
-RUN ./mvnw package -DskipTests
+RUN mvnw package -DskipTests
 
