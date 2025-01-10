@@ -9,9 +9,6 @@ WORKDIR /app
 # Cài đặt Maven (sử dụng apk thay vì apt-get)
 RUN apk add --no-cache maven
 
-# Đảm bảo file mvnw có quyền thực thi
-RUN chmod +x mvnw
-
 # Chạy lệnh build Maven
 RUN ./mvnw package -DskipTests
 
