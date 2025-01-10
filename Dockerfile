@@ -4,6 +4,6 @@ COPY . /app
 
 WORKDIR /app
 
-RUN chmod +x mvnw
+RUN apt-get update && apt-get install -y maven
 
 RUN ./mvnw package -DskipTests
