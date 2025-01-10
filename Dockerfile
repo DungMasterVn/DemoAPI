@@ -1,18 +1,16 @@
-# Sử dụng image Python chính thức
-FROM python:3.9-slim
+# Chọn base image Python
+FROM python:3.8-slim
 
-# Đặt thư mục làm việc trong container
+# Cài đặt các phụ thuộc cần thiết
+RUN pip install --upgrade pip
+RUN pip install flask
+
+# Sao chép mã nguồn vào container
+COPY . /app
 WORKDIR /app
 
-# Sao chép các file cần thiết từ máy host vào container
-COPY requirements.txt requirements.txt
-COPY app.py app.py
-
-# Cài đặt các thư viện cần thiết
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Expose cổng 5000 để ứng dụng có thể truy cập từ bên ngoài
+# Mở cổng 5000
 EXPOSE 5000
 
-# Lệnh khởi chạy ứng dụng
+# Chạy ứng dụng Flask
 CMD ["python", "app.py"]
