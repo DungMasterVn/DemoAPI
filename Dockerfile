@@ -2,7 +2,7 @@
 FROM maven:3.8.5-openjdk-17 AS builder
 
 # Sao chép file cấu hình Maven trước
-COPY pom.xml /app/pom.xml
+COPY /app/pom.xml /app/pom.xml
 WORKDIR /app
 RUN mvn dependency:resolve
 
